@@ -45,12 +45,9 @@ public class ApplicationRunnerProject implements ApplicationRunner {
 	
 	private void initLocation() {
 		
-		locationService.save(new Location(1, "Rampura, Dhaka"));
-		locationService.save(new Location(2, "Mohakhali, Dhaka"));
-		locationService.save(new Location(3, "Gulsan 1, Dhaka"));
-		locationService.save(new Location(4, "Tejgaon, Dhaka"));
-		locationService.save(new Location(5, "Badda,Dhaka"));
-		locationService.save(new Location(6, "Mogbazar, Dhaka"));
+		locationService.save(new Location(1, "Sylhet"));
+		locationService.save(new Location(2, "Bandarban"));
+		locationService.save(new Location(3, "Khulna"));
 		
 	}
 
