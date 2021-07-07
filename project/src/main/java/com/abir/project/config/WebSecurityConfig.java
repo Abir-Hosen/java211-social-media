@@ -24,15 +24,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 	
 
-	private final String USERS_QUERY = "select email, password from user where email=?";
-//	private final String ROLES_QUERY = "select u.email, r.name from user u inner join role r on (u.user_roles = r.id) where u.email=?";
+	private final String USERS_QUERY = "select email, password, true as enabled from user where email=?";
+	private final String ROLES_QUERY = "select u.email, u.role from user u where u.email=?";
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.jdbcAuthentication()
 		.usersByUsernameQuery(USERS_QUERY)
-//		.authoritiesByUsernameQuery(ROLES_QUERY)
+		.authoritiesByUsernameQuery(ROLES_QUERY)
 		.dataSource(dataSource)
 		.passwordEncoder(bCryptPasswordEncoder);
 	}
@@ -43,8 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/signup").permitAll()
-				.antMatchers("/home").permitAll()
-//				.antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+				.antMatchers("/").permitAll()
+				.antMatchers("/css/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.csrf()
@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login")
 				.permitAll()
 				.failureUrl("/login?message=error")
-				.defaultSuccessUrl("/welcome")
+				.defaultSuccessUrl("/")
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.and()

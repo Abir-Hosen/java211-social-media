@@ -18,6 +18,10 @@ public class Posts {
 	@OneToOne
 	private Location location;
 	
+	public Posts() {
+		super();
+	}
+
 	public Posts(long id, String text, Boolean isPublicPost, User user, Location location) {
 		super();
 		this.id = id;

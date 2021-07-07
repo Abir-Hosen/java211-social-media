@@ -1,7 +1,11 @@
-Java Project
+#Full Java Project with 
 
-docker-compose -f mysql-docker-compose.yml up
+1. Spring Boot
+2. Spring Security
+3. Hibernate (JPA) - h2 in memory DB
+4. jsp and jstl
 
-./mvnw package
-docker-compose build
-docker-compose up
+from package directory, run: 
+
+```./mvnw package && java -jar target/project-0.0.1-SNAPSHOT.jar```
+

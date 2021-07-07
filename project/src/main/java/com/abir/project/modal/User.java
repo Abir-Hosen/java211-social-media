@@ -12,15 +12,21 @@ public class User {
 	@GeneratedValue
 	private long id;
 	private String name;
+	private String role="ADMIN";
 	private String email;
 	private String password;
 	@Transient
 	private String confirmPassword;
 	
-	public User(long id, String name, String email, String password, String confirmPassword) {
+	public User() {
+		super();
+	}
+
+	public User(long id, String name, String role, String email, String password, String confirmPassword) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.role = role;
 		this.email = email;
 		this.password = password;
 		this.confirmPassword = confirmPassword;
@@ -40,6 +46,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getEmail() {
@@ -65,5 +79,5 @@ public class User {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
+
 }

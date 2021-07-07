@@ -21,6 +21,7 @@ public class UserController {
 	
 	@PostMapping
 	User createShortainer(@RequestBody User user) {
+		System.out.println("create user");
 		return userService.save(user);
 	}
 	

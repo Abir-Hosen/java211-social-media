@@ -18,6 +18,11 @@ public class PostsServiceImpl implements PostsService {
 
 	@Override
 	public Posts save(Posts post) {
+		if(post.getIsPublicPost()!=null) {
+			post.setIsPublicPost(true);
+		}else {
+			post.setIsPublicPost(false);
+		}
 		return postsRepository.save(post);
 	}
 
@@ -29,6 +34,11 @@ public class PostsServiceImpl implements PostsService {
 	@Override
 	public List<Posts> findAllPublic(Long id) {
 		return postsRepository.findByUserIdAndPublic(id);
+	}
+
+	@Override
+	public Posts findById(Long id) {
+		return postsRepository.findById(id).get();
 	}
 
 }

@@ -11,7 +11,7 @@ import com.abir.project.modal.Posts;
 @Repository("postsRepository")
 public interface PostsRepository extends JpaRepository<Posts, Long> {
 
-	@Query("select p from Posts p where p.isPublicPost=true OR p.user=?1 ")
+	@Query("select p from Posts p where p.isPublicPost=true OR p.user.id=?1 ")
 	List<Posts> findByUserIdAndPublic(Long id);
 	List<Posts> findByUserId(Long id);
 

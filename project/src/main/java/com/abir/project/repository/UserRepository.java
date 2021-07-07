@@ -8,4 +8,5 @@ import com.abir.project.modal.User;
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	public User findByEmail(String email);
 }

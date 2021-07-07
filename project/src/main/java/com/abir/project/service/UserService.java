@@ -6,5 +6,6 @@ public interface UserService {
 	
 	public User save(User user);
 	public User findById(Long id);
+	public User findByEmail(String email);
 
 }
